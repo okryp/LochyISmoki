@@ -1,0 +1,13 @@
+body {
+    all: none;
+}
+
+.dark-theme {
+    background: #222;
+    color: #dedf9e;
+}
+
+.light-theme {
+    background: #dedf9e;
+    color: #222;
+}

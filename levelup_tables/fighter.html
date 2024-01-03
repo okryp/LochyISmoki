@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>fighter.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="fighter-levelup-table">FIGHTER LEVELUP TABLE</h1>
+<table>
+<thead>
+<tr>
+<th>LEVEL</th>
+<th>PROFICIENCY BONUS</th>
+<th>FEATURES</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1st</strong></td>
+<td>+2</td>
+<td>Fighting Style, Second Wind</td>
+</tr>
+<tr>
+<td><strong>2nd</strong></td>
+<td>+2</td>
+<td>Action Surge (1/rest)</td>
+</tr>
+<tr>
+<td><strong>3rd</strong></td>
+<td>+2</td>
+<td>Martial Archetype</td>
+</tr>
+<tr>
+<td><strong>4th</strong></td>
+<td>+2</td>
+<td>Ability Score Improvement</td>
+</tr>
+<tr>
+<td><strong>5th</strong></td>
+<td>+3</td>
+<td>Extra Attack</td>
+</tr>
+<tr>
+<td><strong>6th</strong></td>
+<td>+3</td>
+<td>Ability Score Improvement</td>
+</tr>
+<tr>
+<td><strong>7th</strong></td>
+<td>+3</td>
+<td>Martial Archetype Feature</td>
+</tr>
+<tr>
+<td><strong>8th</strong></td>
+<td>+3</td>
+<td>Ability Score Improvement</td>
+</tr>
+<tr>
+<td><strong>9th</strong></td>
+<td>+4</td>
+<td>Indomitable (1/rest)</td>
+</tr>
+<tr>
+<td><strong>10th</strong></td>
+<td>+4</td>
+<td>Martial Archetype Feature</td>
+</tr>
+<tr>
+<td><strong>11th</strong></td>
+<td>+4</td>
+<td>Extra Attack (2)</td>
+</tr>
+<tr>
+<td><strong>12th</strong></td>
+<td>+4</td>
+<td>Ability Score Improvement</td>
+</tr>
+<tr>
+<td><strong>13th</strong></td>
+<td>+5</td>
+<td>Indominable (2/rest)</td>
+</tr>
+<tr>
+<td><strong>14th</strong></td>
+<td>+5</td>
+<td>Ability Score Improvement</td>
+</tr>
+<tr>
+<td><strong>15th</strong></td>
+<td>+5</td>
+<td>Martial Ability Feature</td>
+</tr>
+<tr>
+<td><strong>16th</strong></td>
+<td>+5</td>
+<td>Ability Score Improvement</td>
+</tr>
+<tr>
+<td><strong>17th</strong></td>
+<td>+6</td>
+<td>Action Surge (2/rest), Indomitable (3/rest)</td>
+</tr>
+<tr>
+<td><strong>18th</strong></td>
+<td>+6</td>
+<td>Martial Archetype Feature</td>
+</tr>
+<tr>
+<td><strong>19th</strong></td>
+<td>+6</td>
+<td>Ability Score Improvement</td>
+</tr>
+<tr>
+<td><strong>20th</strong></td>
+<td>+6</td>
+<td>Extra Attack (3)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="class-features">Class Features</h2>
+<p>As a fighter, you gain the following class features.</p>
+<p><strong>Hit Points</strong></p>
+<p>Hit Dice: 1d10 per fighter level
+Hit Points at 1st Level: 10 + your Constitution modifier
+Hit Points at Higher Levels: 1d10 (or 6) + your Constitution modifier per fighter level after 1st
+Proficiencies</p>
+<p>Armor: All armor, shields
+Weapons: Simple weapons, martial weapons
+Tools: None
+Saving Throws: Strength, Constitution
+Skills: Choose two skills from Acrobatics, Animal Handling, Athletics, History, Insight, Intimidation, Perception, and Survival
+Equipment</p>
+<pre><code>(a) chain mail or (b) leather, longbow, and 20 arrows
+(a) a martial weapon and a shield or (b) two martial weapons
+(a) a light crossbow and 20 bolts or (b) two handaxes
+(a) a dungeoneer's pack or (b) an explorer's pack
+</code></pre>
+<h2 id="fighting-style">Fighting Style</h2>
+<p><strong>Archery:</strong></p>
+<p>You gain a +2 bonus to attack rolls you make with ranged weapons.</p>
+<p><strong>Defence:</strong></p>
+<p>While you are wearing armor, you gain a +1 bonus to AC.</p>
+<p><strong>Duelling:</strong></p>
+<p>When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.</p>
+<p><strong>Great Weapon Fighting:</strong></p>
+<p>When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit.</p>
+<p><strong>Protection:</strong></p>
+<p>When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.</p>
+<p><strong>Two-Weapon Fighting:</strong></p>
+<p>When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack.</p>
+<hr>
+<h2 id="abilities">Abilities</h2>
+<p><strong>Second Wind:</strong></p>
+<p>You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level. Once you use this feature, you must finish a short or long rest before you can use it again.</p>
+<p><strong>Action Surge:</strong></p>
+<p>Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action.</p>
+<p>Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn.</p>
+<p><strong>Extra Attack:</strong></p>
+<p>Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.</p>
+<p>The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class.</p>
+<p><strong>Indomitable:</strong></p>
+<p>Beginning at 9th level, you can reroll a saving throw that you fail. If you do so, you must use the new roll, and you can’t use this feature again until you finish a long rest.</p>
+<p>You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level.</p>
+<hr>
+
+</body>
+</html>

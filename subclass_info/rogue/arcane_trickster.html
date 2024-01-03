@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>arcane_trickster.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="arcane-trickster">ARCANE TRICKSTER</h1>
+<p>Some rogues enhance their fine-honed skills of stealth and agility with magic, learning tricks of enchantment and illusion. These rogues include pickpockets and burglars, but also pranksters, mischief-makers, and a significant number of adventurers.</p>
+<table>
+<thead>
+<tr>
+<th>LEVEL</th>
+<th>CANTRIPS KNOWN</th>
+<th>SPELLS KNOWN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3rd</strong></td>
+<td>Mage Hand + 2</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>4th</strong></td>
+<td>Mage Hand + 2</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>5th</strong></td>
+<td>Mage Hand + 2</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>6th</strong></td>
+<td>Mage Hand + 2</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>7th</strong></td>
+<td>Mage Hand + 2</td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong>8th</strong></td>
+<td>Mage Hand + 2</td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>9th</strong></td>
+<td>Mage Hand + 2</td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>10th</strong></td>
+<td>Mage Hand + 3</td>
+<td>7</td>
+</tr>
+<tr>
+<td><strong>11th</strong></td>
+<td>Mage Hand + 3</td>
+<td>8</td>
+</tr>
+<tr>
+<td><strong>12th</strong></td>
+<td>Mage Hand + 3</td>
+<td>8</td>
+</tr>
+<tr>
+<td><strong>13th</strong></td>
+<td>Mage Hand + 3</td>
+<td>9</td>
+</tr>
+<tr>
+<td><strong>14th</strong></td>
+<td>Mage Hand + 3</td>
+<td>10</td>
+</tr>
+<tr>
+<td><strong>15th</strong></td>
+<td>Mage Hand + 3</td>
+<td>10</td>
+</tr>
+<tr>
+<td><strong>16th</strong></td>
+<td>Mage Hand + 3</td>
+<td>11</td>
+</tr>
+<tr>
+<td><strong>17th</strong></td>
+<td>Mage Hand + 3</td>
+<td>11</td>
+</tr>
+<tr>
+<td><strong>18th</strong></td>
+<td>Mage Hand + 3</td>
+<td>11</td>
+</tr>
+<tr>
+<td><strong>19th</strong></td>
+<td>Mage Hand + 3</td>
+<td>12</td>
+</tr>
+<tr>
+<td><strong>20th</strong></td>
+<td>Mage Hand + 3</td>
+<td>13</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SPELL SLOTS PER SPELL LEVEL</strong></p>
+<table>
+<thead>
+<tr>
+<th>LEVEL</th>
+<th>1st</th>
+<th>2nd</th>
+<th>3rd</th>
+<th>4th</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3rd</td>
+<td>2</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>4th</td>
+<td>3</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>5th</td>
+<td>3</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>6th</td>
+<td>3</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>7th</td>
+<td>4</td>
+<td>2</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>8th</td>
+<td>4</td>
+<td>2</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>9th</td>
+<td>4</td>
+<td>2</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>10th</td>
+<td>4</td>
+<td>3</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>11th</td>
+<td>4</td>
+<td>3</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>12th</td>
+<td>4</td>
+<td>3</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>13th</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>14th</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>15th</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>16th</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>-</td>
+</tr>
+<tr>
+<td>17th</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>-</td>
+</tr>
+<tr>
+<td>18th</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>-</td>
+</tr>
+<tr>
+<td>19th</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>20th</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="spellcasting">Spellcasting</h2>
+<p>When you reach 3rd level, you augment your martial prowess with the ability to cast spells.</p>
+<h3 id="cantrips">Cantrips</h3>
+<p>You learn three cantrips: Mage Hand and two other cantrips of your choice from the wizard spell list. You learn another wizard cantrip of your choice at 10th level.</p>
+<h3 id="spell-slots">Spell Slots</h3>
+<p>The Arcane Trickster Spellcasting table shows how many spell slots you have to cast your wizard spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.</p>
+<p>For example, if you know the 1st-level spell Charm Person and have a 1st-level and a 2nd-level spell slot available, you can cast Charm Person using either slot.</p>
+<h3 id="spells-known-of-1st-level-and-higher">Spells Known of 1st Level and Higher</h3>
+<p>You know three 1st-level wizard spells of your choice, two of which you must choose from the enchantment and illusion spells on the wizard spell list.</p>
+<p>The Spells Known column of the Arcane Trickster Spellcasting table shows when you learn more wizard spells of 1st level or higher. Each of these spells must be an enchantment or illusion spell of your choice, and must be of a level for which you have spell slots. For instance, when you reach 7th level in this class, you can learn one new spell of 1st or 2nd level.</p>
+<p>The spells you learn at 8th, 14th, and 20th level can come from any school of magic.</p>
+<p>Whenever you gain a level in this class, you can replace one of the wizard spells you know with another spell of your choice from the wizard spell list. The new spell must be of a level for which you have spell slots, and it must be an enchantment or illusion spell, unless you're replacing the spell you gained at 3rd, 8th, 14th, or 20th level from any school of magic.</p>
+<h3 id="spellcasting-ability">Spellcasting Ability</h3>
+<p>Intelligence is your spellcasting ability for your wizard spells, since you learn your spells through dedicated study and memorization. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.</p>
+<p><strong>Spell save DC</strong> = 8 + your proficiency bonus + your Intelligence modifier</p>
+<p><strong>Spell attack modifier</strong> = your proficiency bonus + your Intelligence modifier</p>
+<h2 id="mage-hand-legerdemain">Mage Hand Legerdemain</h2>
+<p>Starting at 3rd level, when you cast Mage Hand, you can make the spectral hand invisible, and you can perform the following additional tasks with it:</p>
+<ul>
+<li>
+<p>You can stow one object the hand is holding in a container worn or carried by another creature.</p>
+</li>
+<li>
+<p>You can retrieve an object in a container worn or carried by another creature.</p>
+</li>
+<li>
+<p>You can use thieves' tools to pick locks and disarm traps at range.</p>
+</li>
+</ul>
+<p>You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity (Sleight of Hand) check contested by the creature's Wisdom (Perception) check.</p>
+<p>In addition, you can use the bonus action granted by your Cunning Action to control the hand.</p>
+<h2 id="magical-ambush">Magical Ambush</h2>
+<p>Starting at 9th level, if you are hidden from a creature when you cast a spell on it, the creature has disadvantage on any saving throw it makes against the spell this turn.</p>
+<h2 id="versatile-trickster">Versatile Trickster</h2>
+<p>At 13th level, you gain the ability to distract targets with your Mage Hand. As a bonus action on your turn, you can designate a creature within 5 feet of the spectral hand created by the spell. Doing so gives you advantage on attack rolls against that creature until the end of the turn.</p>
+<h2 id="spell-thief">Spell Thief</h2>
+<p>At 17th level, you gain the ability to magically steal the knowledge of how to cast a spell from another spellcaster.</p>
+<p>Immediately after a creature casts a spell that targets you or includes you in its area of effect, you can use your reaction to force the creature to make a saving throw with its spellcasting ability modifier. The DC equals your spell save DC. On a failed save, you negate the spell's effect against you, and you steal the knowledge of the spell if it is at least 1st level and of a level you can cast (it doesn't need to be a wizard spell). For the next 8 hours, you know the spell and can cast it using your spell slots. The creature can't cast that spell until the 8 hours have passed.</p>
+<p>Once you use this feature, you can't use it again until you finish a long rest.</p>
+
+</body>
+</html>

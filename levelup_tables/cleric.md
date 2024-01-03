@@ -2,54 +2,80 @@
 
 LEVEL | PROFICIENCY BONUS | FEATURES | CANTRIPS KNOWN 
 ------|-------------------|----------|---------------
-1st   | +2 | - | 3
-2nd | +2 | Channel Divinity (1/rest), Divine Domain Feature | 3
-3rd | +2 | - | 3 |
-4th | +2 | Ability Score Improvement | 4
-5th | +3 | Destroy Undead (CR 1/2) | 4
-6th | +3 | Channel Divinity (2/rest), Divine Domain Feature | 4
-7th | +3 | - | 4
-8th | +3 | Ability Score Improvement, Destroy Undead (CR 1), Divine Domain Feature | 4
-9th | +4 | - | 4
-10th | +4 | Divine Intervention | 5
-11th | +4 | Destroy Undead (CR 2) | 5
-12th | +4 | Ability Score Improvement | 5
-13th | +5 | - | 5
-14th | +5 | Destroy Undead (CR 3) | 5
-15th | +5 | - | 5
-16th | +5 | Ability Score Improvement | 5
-17th | +6 | Destroy Undead (CR 4), Divine Domain Feature | 5
-18th | +6 | Channel Divinity (3/rest) | 5
-19th | +6 | Ability Score Improvement | 5
-20th | +6 | Divine Intervention Improvement | 5
+**1st**  | +2 | - | 3
+**2nd**| +2 | Channel Divinity (1/rest), Divine Domain Feature | 3
+**3rd**| +2 | - | 3 |
+**4th**| +2 | Ability Score Improvement | 4
+**5th**| +3 | Destroy Undead (CR 1/2) | 4
+**6th**| +3 | Channel Divinity (2/rest), Divine Domain Feature | 4
+**7th**| +3 | - | 4
+**8th**| +3 | Ability Score Improvement, Destroy Undead (CR 1), Divine Domain Feature | 4
+**9th**| +4 | - | 4
+**10th** | +4 | Divine Intervention | 5
+**11th** | +4 | Destroy Undead (CR 2) | 5
+**12th** | +4 | Ability Score Improvement | 5
+**13th** | +5 | - | 5
+**14th** | +5 | Destroy Undead (CR 3) | 5
+**15th** | +5 | - | 5
+**16th** | +5 | Ability Score Improvement | 5
+**17th** | +6 | Destroy Undead (CR 4), Divine Domain Feature | 5
+**18th** | +6 | Channel Divinity (3/rest) | 5
+**19th** | +6 | Ability Score Improvement | 5
+**20th** | +6 | Divine Intervention Improvement | 5
 
 ## SPELLSLOTS PER LEVEL
 
 LEVEL | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 ------|---|---|---|---|---|---|---|---|---
-1st   | 2 | - | - | - | - | - | - | - | -
-2nd   | 3 | - | - | - | - | - | - | - | -
-3rd   | 4 | 2 | - | - | - | - | - | - | -
-4th   | 4 | 3 | - | - | - | - | - | - | -
-5th   | 4 | 3 | 2 | - | - | - | - | - | -
-6th   | 4 | 3 | 3 | - | - | - | - | - | -
-7th   | 4 | 3 | 3 | 1 | - | - | - | - | -
-8th   | 4 | 3 | 3 | 2 | - | - | - | - | -
-9th   | 4 | 3 | 3 | 3 | 1 | - | - | - | -
-10th  | 4 | 3 | 3 | 3 | 2 | - | - | - | -
-11th  | 4 | 3 | 3 | 3 | 2 | 1 | - | - | -
-12th  | 4 | 3 | 3 | 3 | 2 | 1 | - | - | -
-13th  | 4 | 3 | 3 | 3 | 2 | 1 | - | - | -
-14th  | 4 | 3 | 3 | 3 | 2 | 1 | 1 | - | -
-15th  | 4 | 3 | 3 | 3 | 2 | 1 | 1 | - | -
-16th  | 4 | 3 | 3 | 3 | 2 | 1 | 1 | 1 | -
-17th  | 4 | 3 | 3 | 3 | 2 | 1 | 1 | 1 | -
-18th  | 4 | 3 | 3 | 3 | 2 | 1 | 1 | 1 | 1
-19th  | 4 | 3 | 3 | 3 | 3 | 1 | 1 | 1 | 1
-19th  | 4 | 3 | 3 | 3 | 3 | 2 | 1 | 1 | 1
-20th  | 4 | 3 | 3 | 3 | 3 | 2 | 2 | 1 | 1
+**1st**  | 2 | - | - | - | - | - | - | - | -
+**2nd**  | 3 | - | - | - | - | - | - | - | -
+**3rd**  | 4 | 2 | - | - | - | - | - | - | -
+**4th**  | 4 | 3 | - | - | - | - | - | - | -
+**5th**  | 4 | 3 | 2 | - | - | - | - | - | -
+**6th**  | 4 | 3 | 3 | - | - | - | - | - | -
+**7th**  | 4 | 3 | 3 | 1 | - | - | - | - | -
+**8th**  | 4 | 3 | 3 | 2 | - | - | - | - | -
+**9th**  | 4 | 3 | 3 | 3 | 1 | - | - | - | -
+**10th**  | 4 | 3 | 3 | 3 | 2 | - | - | - | -
+**11th**  | 4 | 3 | 3 | 3 | 2 | 1 | - | - | -
+**12th**  | 4 | 3 | 3 | 3 | 2 | 1 | - | - | -
+**13th**  | 4 | 3 | 3 | 3 | 2 | 1 | - | - | -
+**14th**  | 4 | 3 | 3 | 3 | 2 | 1 | 1 | - | -
+**15th**  | 4 | 3 | 3 | 3 | 2 | 1 | 1 | - | -
+**16th**  | 4 | 3 | 3 | 3 | 2 | 1 | 1 | 1 | -
+**17th**  | 4 | 3 | 3 | 3 | 2 | 1 | 1 | 1 | -
+**18th**  | 4 | 3 | 3 | 3 | 2 | 1 | 1 | 1 | 1
+**19th**  | 4 | 3 | 3 | 3 | 3 | 1 | 1 | 1 | 1
+**19th**  | 4 | 3 | 3 | 3 | 3 | 2 | 1 | 1 | 1
+**20th**  | 4 | 3 | 3 | 3 | 3 | 2 | 2 | 1 | 1
 
 ---
+
+## Class Features
+
+As a cleric, you gain the following class features.
+
+**Hit Points**
+
+Hit Dice: 1d8 per cleric level
+Hit Points at 1st Level: 8 + your Constitution modifier
+Hit Points at Higher Levels: 1d8 (or 5) + your Constitution modifier per cleric level after 1st
+Proficiencies
+
+Armor: Light armor, medium armor, shields
+Weapons: All simple weapons
+Tools: None
+Saving Throws: Wisdom, Charisma
+Skills: Choose two from History, Insight, Medicine, Persuasion, and Religion
+Equipment
+
+You start with the following equipment, in addition to the equipment granted by your background:
+
+    (a) a mace or (b) a warhammer (if proficient)
+    (a) scale mail, (b) leather armor, or (c) chain mail (if proficient)
+    (a) a light crossbow and 20 bolts or (b) any simple weapon
+    (a) a priest's pack or (b) an explorer's pack
+    A shield and a holy symbol
 
 ## Divine Domain Features (LIFE DOMAIN)
 

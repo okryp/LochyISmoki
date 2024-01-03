@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>bard.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="bard-level-up-tables">BARD LEVEL UP TABLES</h1>
+<table>
+<thead>
+<tr>
+<th>LEVEL</th>
+<th>PROFICIENCY BONUS</th>
+<th>FEATURES</th>
+<th>CANTRIPS KNOWN</th>
+<th>SPELLS KNOWN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1st</strong></td>
+<td>+2</td>
+<td>Spellcasting, Bardic Inspiration (d6)</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>2nd</strong></td>
+<td>+2</td>
+<td>Jack of All Trades, Song of Rest (d6)</td>
+<td>2</td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong>3rd</strong></td>
+<td>+2</td>
+<td>Bard College, Expertise</td>
+<td>2</td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>4th</strong></td>
+<td>+2</td>
+<td>Ability Score Improvement</td>
+<td>2</td>
+<td>7</td>
+</tr>
+<tr>
+<td><strong>5th</strong></td>
+<td>+3</td>
+<td>Bardic Inspiration (d8), Font of Inspiration</td>
+<td>3</td>
+<td>8</td>
+</tr>
+<tr>
+<td><strong>6th</strong></td>
+<td>+3</td>
+<td>Countercharm, Bardic College Feature</td>
+<td>3</td>
+<td>9</td>
+</tr>
+<tr>
+<td><strong>7th</strong></td>
+<td>+3</td>
+<td>-</td>
+<td>3</td>
+<td>10</td>
+</tr>
+<tr>
+<td><strong>8th</strong></td>
+<td>+3</td>
+<td>Ability Score Improvement</td>
+<td>3</td>
+<td>11</td>
+</tr>
+<tr>
+<td><strong>9th</strong></td>
+<td>+4</td>
+<td>Song of Rest (d8)</td>
+<td>3</td>
+<td>12</td>
+</tr>
+<tr>
+<td><strong>10th</strong></td>
+<td>+4</td>
+<td>Bardic Inspiration (d10), Expertise, Magical Secrets</td>
+<td>4</td>
+<td>14</td>
+</tr>
+<tr>
+<td><strong>11th</strong></td>
+<td>+4</td>
+<td>-</td>
+<td>4</td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>12th</strong></td>
+<td>+4</td>
+<td>Ability Score Improvement</td>
+<td>4</td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>13th</strong></td>
+<td>+5</td>
+<td>Song of Rest (d10)</td>
+<td>4</td>
+<td>16</td>
+</tr>
+<tr>
+<td><strong>14th</strong></td>
+<td>+5</td>
+<td>Magical Secrets, Bard College Feature</td>
+<td>4</td>
+<td>18</td>
+</tr>
+<tr>
+<td><strong>15th</strong></td>
+<td>+5</td>
+<td>Bardic Inspiration (d12)</td>
+<td>4</td>
+<td>19</td>
+</tr>
+<tr>
+<td><strong>16th</strong></td>
+<td>+5</td>
+<td>Ability Score Improvement</td>
+<td>4</td>
+<td>19</td>
+</tr>
+<tr>
+<td><strong>17th</strong></td>
+<td>+6</td>
+<td>Song of Rest (d12)</td>
+<td>4</td>
+<td>20</td>
+</tr>
+<tr>
+<td><strong>18th</strong></td>
+<td>+6</td>
+<td>Magical Secrets</td>
+<td>4</td>
+<td>22</td>
+</tr>
+<tr>
+<td><strong>19th</strong></td>
+<td>+6</td>
+<td>Ability Score Improvement</td>
+<td>4</td>
+<td>22</td>
+</tr>
+<tr>
+<td><strong>20th</strong></td>
+<td>+6</td>
+<td>Superior Inspiration</td>
+<td>4</td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+<h2 id="class-features">Class Features</h2>
+<p>As a bard, you gain the following class features.</p>
+<p><strong>Hit Points</strong></p>
+<p>Hit Dice: 1d8 per bard level
+Hit Points at 1st Level: 8 + your Constitution modifier
+Hit Points at Higher Levels: 1d8 (or 5) + your Constitution modifier per bard level after 1st
+Proficiencies</p>
+<p>Armor: Light armor
+Weapons: Simple weapons, hand crossbows, longswords, rapiers, shortswords
+Tools: Three musical instruments of your choice
+Saving Throws: Dexterity, Charisma
+Skills: Choose any three
+Equipment</p>
+<p>You start with the following equipment, in addition to the equipment granted by your background:</p>
+<pre><code>(a) a rapier, (b) a longsword, or (c) any simple weapon
+(a) a diplomat's pack or (b) an entertainer's pack
+(a) a lute or (b) any other musical instrument
+Leather armor and a dagger
+</code></pre>
+<h2 id="spellcasting">Spellcasting</h2>
+<p>You have learned to untangle and reshape the fabric of reality in harmony with your wishes and music. Your spells are part of your vast repertoire, magic that you can tune to different situations.</p>
+<h3 id="cantrips">Cantrips</h3>
+<p>You know two cantrips of your choice from the bard spell list. You learn additional bard cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Bard table.</p>
+<h3 id="spell-slots">Spell Slots</h3>
+<p>The Bard table shows how many spell slots you have to cast your bard spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest. For example, if you know the 1st-level spell Cure Wounds and have a 1st-level and a 2nd-level spell slot available, you can cast Cure Wounds using either slot.</p>
+<h3 id="spells-known-of-1st-level-and-higher">Spells Known of 1st Level and Higher</h3>
+<p>You know four 1st-level spells of your choice from the bard spell list.</p>
+<p>The Spells Known column of the Bard table shows when you learn more bard spells of your choice. Each of these spells must be of a level for which you have spell slots, as shown on the table. For instance, when you reach 3rd level in this class, you can learn one new spell of 1st or 2nd level.</p>
+<p>Additionally, when you gain a level in this class, you can choose one of the bard spells you know and replace it with another spell from the bard spell list, which also must be of a level for which you have spell slots.</p>
+<h3 id="spellcasting-ability">Spellcasting Ability</h3>
+<p>Charisma is your spellcasting ability for your bard spells. Your magic comes from the heart and soul you pour into the performance of your music or oration. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a bard spell you cast and when making an attack roll with one.</p>
+<p><strong>Spell save DC</strong> = 8 + your proficiency bonus + your Charisma modifier</p>
+<p><strong>Spell attack modifier</strong> = your proficiency bonus + your Charisma modifier</p>
+<h3 id="ritual-casting">Ritual Casting</h3>
+<p>You can cast any bard spell you know as a ritual if that spell has the ritual tag.</p>
+<h3 id="spellcasting-focus">Spellcasting Focus</h3>
+<p>You can use a musical instrument (found in chapter 5) as a spellcasting focus for your bard spells.</p>
+<h2 id="bardic-inspiration">Bardic Inspiration</h2>
+<p>You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6.</p>
+<p>Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The creature can wait until after it rolls the d20 before deciding to use the Bardic Inspiration die, but must decide before the DM says whether the roll succeeds or fails. Once the Bardic Inspiration die is rolled, it is lost. A creature can have only one Bardic Inspiration die at a time.</p>
+<p>You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain any expended uses when you finish a long rest.</p>
+<p>Your Bardic Inspiration die changes when you reach certain levels in this class. The die becomes a d8 at 5th level, a d10 at 10th level, and a d12 at 15th level.</p>
+<h2 id="jack-of-all-trades">Jack of All Trades</h2>
+<p>Starting at 2nd level, you can add half your proficiency bonus, rounded down, to any ability check you make that doesn't already include your proficiency bonus.</p>
+<h2 id="song-of-rest">Song of Rest</h2>
+<p>Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points at the end of the short rest by spending one or more Hit Dice, each of those creatures regains an extra 1d6 hit points.</p>
+<p>The extra Hit Points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level.</p>
+<h2 id="bard-college">Bard College</h2>
+<p>At 3rd level, you delve into the advanced techniques of a bard college of your choice. Your choice grants you features at 3rd level and again at 6th and 14th level.</p>
+<ul>
+<li>Lore</li>
+<li>Valor</li>
+<li>Swords</li>
+</ul>
+<h2 id="expertise">Expertise</h2>
+<p>At 3rd level, choose two of your skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.</p>
+<p>At 10th level, you can choose another two skill proficiencies to gain this benefit.</p>
+<h2 id="ability-score-improvement">Ability Score Improvement</h2>
+<p>When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.</p>
+<h2 id="font-of-inspiration">Font of Inspiration</h2>
+<p>Beginning when you reach 5th level, you regain all of your expended uses of Bardic Inspiration when you finish a short or long rest.</p>
+<h2 id="countercharm">Countercharm</h2>
+<p>At 6th level, you gain the ability to use musical notes or words of power to disrupt mind-influencing effects. As an action, you can start a performance that lasts until the end of your next turn. During that time, you and any friendly creatures within 30 feet of you have advantage on saving throws against being frightened or charmed. A creature must be able to hear you to gain this benefit. The performance ends early if you are incapacitated or silenced or if you voluntarily end it (no action required).</p>
+<h2 id="magical-secrets">Magical Secrets</h2>
+<p>By 10th level, you have plundered magical knowledge from a wide spectrum of disciplines. Choose two spells from any classes, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.</p>
+<p>The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table.</p>
+<p>You learn two additional spells from any classes at 14th level and again at 18th level.</p>
+<h2 id="superior-inspiration">Superior Inspiration</h2>
+<p>At 20th level, when you roll initiative and have no uses of Bardic Inspiration left, you regain one use.</p>
+
+</body>
+</html>
